@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 public class MovePlayer : MonoBehaviour
 {
+    public static MovePlayer current;
     [SerializeField]
     float movespeed=10f;
     
     PhotonView myview;
-    TurnManager tm;
-    GridMovement Gm;
     Coroutine MoveIE;
     bool movementFinished=true;
+
+    public event Action OnPlayerFinishedMove;
+
+    public void PlayerFinishedMove()
+    {
+        if (OnPlayerFinishedMove != null)
+        {
+            OnPlayerFinishedMove();
+        }
+    }
     private void Awake()
     {
-        tm = GameObject.FindObjectOfType<TurnManager>();
-        Gm = GameObject.FindObjectOfType<GridMovement>();
         myview = GetComponent<PhotonView>();
-        Debug.Log(myview.Owner.ActorNumber);
+        if (myview.IsMine)
+        {
+            current = this;
+        }
         
     }
 
@@ -26,7 +37,7 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
        
-        if (Input.GetMouseButtonDown(0) && movementFinished==true && myview.IsMine && tm.playerTurn==myview.Owner.ActorNumber)
+        if (Input.GetMouseButtonDown(0) && movementFinished==true && myview.IsMine && TurnManager.current.playerTurn==myview.Owner.ActorNumber)
         {
             
             Ray ray= Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,8 +47,8 @@ public class MovePlayer : MonoBehaviour
                 if (hit.collider.CompareTag("Ground"))
                 {
                     movementFinished = false;
-                    Gm.calculatedMovementList.Clear();
-                    Gm.CalculateMovement(transform.position, hit.collider.transform.position);
+                    GridData.current.calculatedMovementList.Clear();
+                    GridController.current.CalculateMovement(transform.position, hit.collider.transform.position);
                     StartCoroutine(MoveTowardsTarget());
                 }
                 
@@ -47,7 +58,7 @@ public class MovePlayer : MonoBehaviour
     }
     IEnumerator MoveTowardsTarget()
     {
-        for (int i = 0; i < Gm.calculatedMovementList.Count; i++)
+        for (int i = 0; i < GridData.current.calculatedMovementList.Count; i++)
         {
            MoveIE= StartCoroutine(Moving(i));
             yield return MoveIE;
@@ -56,17 +67,16 @@ public class MovePlayer : MonoBehaviour
     }
     IEnumerator Moving(int i)
     {
-        while (transform.position!=Gm.calculatedMovementList[i])
+        while (transform.position!=GridData.current.calculatedMovementList[i])
         {
-            transform.position = Vector3.MoveTowards(transform.position, Gm.calculatedMovementList[i], movespeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, GridData.current.calculatedMovementList[i], movespeed * Time.deltaTime);
             yield return null;  
         }
         yield return new WaitForSeconds(0.1f);
-        if (i == Gm.calculatedMovementList.Count - 1)
+        if (i == GridData.current.calculatedMovementList.Count - 1)
         {
             movementFinished = true;
-
-            tm.setPlayerTurn();
+            OnPlayerFinishedMove();
         }
     }
 }

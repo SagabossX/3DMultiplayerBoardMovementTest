@@ -455,7 +455,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385248155}
-  - component: {fileID: 1385248154}
+  - component: {fileID: 1385248158}
+  - component: {fileID: 1385248156}
+  - component: {fileID: 1385248157}
   m_Layer: 0
   m_Name: GridMovement
   m_TagString: Untagged
@@ -463,23 +465,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1385248154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385248153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 003f888e033e16645ae7dfc96a9a5558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cube: {fileID: 4113808685999423170, guid: 0b5da203f07ec9a48a7905251fdfcfe1, type: 3}
-  gridx: 10
-  gridz: 10
-  gridcellsize: 1
-  calculatedMovementList: []
 --- !u!4 &1385248155
 Transform:
   m_ObjectHideFlags: 0
@@ -495,6 +480,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385248156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385248153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d8f73dfd9ad5d46b8ec15be91d6eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quad: {fileID: 4113808685999423170, guid: 0b5da203f07ec9a48a7905251fdfcfe1, type: 3}
+--- !u!114 &1385248157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385248153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b867988d119ace43aa7c64dca19cc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calculatedMovementList: []
+--- !u!114 &1385248158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385248153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003f888e033e16645ae7dfc96a9a5558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridx: 10
+  gridz: 10
+  gridcellsize: 1
+  calculatedMovementList: []
 --- !u!1 &1621172529
 GameObject:
   m_ObjectHideFlags: 0

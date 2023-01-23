@@ -4,15 +4,21 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-
+using System;
 public class TurnManager : MonoBehaviour
 {
+    public static TurnManager current;
     public int playerTurn = 1;
     [SerializeField]
     TMP_Text txtCanvas;
     PhotonView pv;
+    private void Awake()
+    {
+        current = this;
+    }
     private void Start()
     {
+        MovePlayer.current.OnPlayerFinishedMove += setPlayerTurn;
         pv = GetComponent<PhotonView>();
         txtCanvas.text = "PLayer " +playerTurn.ToString() +"'s Turn";
     }
