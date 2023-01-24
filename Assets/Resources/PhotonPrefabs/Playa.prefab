@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5809818369681752151}
   - component: {fileID: 7667167031648740702}
   - component: {fileID: 6778736583725471723}
+  - component: {fileID: 6403840913628674689}
   m_Layer: 0
   m_Name: Playa
   m_TagString: Untagged
@@ -112,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bcfd3129b57734bb7a58bb44be7f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 10
 --- !u!114 &7667167031648740702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +152,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6403840913628674689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809818369681752150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40e8c79013d6564bafc6f70cf2491dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementFinished: 1

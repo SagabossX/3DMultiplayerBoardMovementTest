@@ -18,7 +18,7 @@ public class TurnManager : MonoBehaviour
     }
     private void Start()
     {
-        MovePlayer.current.OnPlayerFinishedMove += setPlayerTurn;   //Listen to action fired by moveplayer script.
+        AnimatePlayer.current.OnPlayerFinishedMove += setPlayerTurn;   //Listen to action fired by moveplayer script.
         pv = GetComponent<PhotonView>();
         txtCanvas.text = "PLayer " +playerTurn.ToString() +"'s Turn";
     }
