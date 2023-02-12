@@ -48,6 +48,16 @@ MonoBehaviour:
   - SetPlayer1Turn
   - SetPlayerTurn
   - Rpc_SetPLayerTurn
+  - Shoot
+  - ShootBullet
+  - CountDownInitiater
+  - RPC_TakeDamage
+  - IncreaseScoreOnenemyKill
+  - DisplayFinalScores
+  - RPC_DisplayFinalScores
+  - RPC_IncreaseScoreOnenemyKill
+  - RPC_GameOver
+  - RPC_Onshiphit
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
